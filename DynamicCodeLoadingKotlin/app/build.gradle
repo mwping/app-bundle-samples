@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.atlasv.android.publish'
 
 android {
     compileSdkVersion 28
@@ -13,17 +14,24 @@ android {
         versionName "1.0.33"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
-        debugR8 {
-            initWith(debug)
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-
+    signingConfigs {
         release {
-            minifyEnabled true
+            storeFile file('../android_bundle_sample.ks')
+            storePassword 'android#kspass'
+            keyAlias = 'android#alias'
+            keyPassword 'android#pass'
+        }
+    }
+    buildTypes {
+        debug {
+            versionNameSuffix "-debug"
+
+            signingConfig signingConfigs.release
+        }
+        release {
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
         }
     }
 
