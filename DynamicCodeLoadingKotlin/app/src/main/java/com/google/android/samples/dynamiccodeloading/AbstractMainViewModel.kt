@@ -99,8 +99,7 @@ abstract class AbstractMainViewModel(app: Application) : AndroidViewModel(app) {
 
     protected abstract fun initializeStorageFeature()
 
-    private fun isStorageInstalled() =
-        if (BuildConfig.DEBUG) true else splitInstallManager.installedModules.contains(STORAGE_MODULE)
+    private fun isStorageInstalled() = splitInstallManager.installedModules.contains(STORAGE_MODULE)
 
     private fun requestStorageInstall() {
         Toast.makeText(getApplication(), "Requesting storage module install", Toast.LENGTH_SHORT).show()
