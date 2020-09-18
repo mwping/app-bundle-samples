@@ -29,7 +29,7 @@ interface Logger {
     fun log(message: String)
 }
 
-const val TAG = "DynamicCodeLoading"
+const val TAG = "DynamicCodeLoading::"
 
 object MainLogger : Logger {
     override fun log(message: String) {

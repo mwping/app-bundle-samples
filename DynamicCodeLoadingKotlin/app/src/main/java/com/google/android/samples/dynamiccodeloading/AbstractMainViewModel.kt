@@ -111,7 +111,10 @@ abstract class AbstractMainViewModel(app: Application) : AndroidViewModel(app) {
 
         splitInstallManager
             .startInstall(request)
-            .addOnSuccessListener { id -> sessionId = id }
+            .addOnSuccessListener { id ->
+                Log.d(TAG, "Success installing module: id=${id}")
+                sessionId = id
+            }
             .addOnFailureListener { exception ->
                 Log.e(TAG, "Error installing module: ", exception)
                 Toast.makeText(getApplication(), "Error requesting module install", Toast.LENGTH_SHORT).show()
