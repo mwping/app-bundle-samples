@@ -18,7 +18,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-        classpath 'com.atlasv.android.publish:plugin:0.1.28'
+        classpath 'com.atlasv.android.publish:plugin:1.0.0'
     }
 }
 
